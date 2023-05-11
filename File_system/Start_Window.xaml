@@ -1,0 +1,126 @@
+﻿<Window x:Class="File_system_coursework.Start_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:File_system_coursework"
+        mc:Ignorable="d"
+        Background="LightGreen"
+        Title="START WORK BEST IN THE BEST WORLD BEST FS" Height="250" Width="400">
+
+    <Window.Resources>
+        <Style x:Key="TextStyle">
+            <Setter Property="Control.FontFamily" Value="Times New Roman"/>
+            <Setter Property="Control.FontSize" Value="12"/>
+            <Setter Property="Control.Margin" Value="0 10 0 10"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid x:Name="Grid_Choose_Input_FS" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Viewbox VerticalAlignment="Center" Stretch="Uniform">
+                <StackPanel Orientation="Vertical" Margin="20" Grid.Column="0">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock" BasedOn="{StaticResource TextStyle}"/>
+                    </StackPanel.Resources>
+                    <TextBlock TextAlignment="Right">Логин пользователя:</TextBlock>
+                    <TextBlock TextAlignment="Right">Пароль пользователя:</TextBlock>
+                </StackPanel>
+            </Viewbox>
+
+            <Viewbox VerticalAlignment="Center" Grid.Column="1">
+                <StackPanel Orientation="Vertical" Margin="20">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBox" BasedOn="{StaticResource TextStyle}"/>
+                    </StackPanel.Resources>
+                    <TextBox HorizontalAlignment="Left" Width="150" Margin="0 0 0 0" x:Name="TextBox_Choose_Login_User"></TextBox>
+                    <PasswordBox HorizontalAlignment="Left" Width="150" Margin="0 26 0 0" x:Name="PasswordBox_Choose_Password_User"></PasswordBox>
+                </StackPanel>
+            </Viewbox>
+
+            <Viewbox Grid.Row="1" Grid.Column="1">
+                <Button MaxWidth="150" MaxHeight="20" Margin="5" Style="{StaticResource TextStyle}" 
+                    x:Name="Button_Choose2_FS" Click="Button_Choose2_FS_Click">Войти</Button>
+            </Viewbox>
+
+            <Button Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                    MinWidth="50" MinHeight="50" Opacity="0" x:Name="Button_Door" Click="Button_Door_Click">
+            </Button>
+            
+        </Grid>
+        <Grid x:Name="Grid_Create_Input_FS" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Viewbox VerticalAlignment="Top" Stretch="Uniform">
+                <StackPanel Orientation="Vertical" Margin="20" Grid.Column="0">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock" BasedOn="{StaticResource TextStyle}"/>
+                    </StackPanel.Resources>
+                    <TextBlock TextAlignment="Right">Тип файловой системы:</TextBlock>
+                    <TextBlock TextAlignment="Right">Размер кластера:</TextBlock>
+                    <TextBlock TextAlignment="Right" TextWrapping="Wrap">Размер файловой системы в Кб:</TextBlock>
+                    <TextBlock TextAlignment="Right">Логин пользователя:</TextBlock>
+                    <TextBlock TextAlignment="Right">Пароль пользователя:</TextBlock>
+                </StackPanel>
+            </Viewbox>
+
+            <Viewbox VerticalAlignment="Top" Grid.Column="1">
+                <StackPanel Orientation="Vertical" Margin="20">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBox" BasedOn="{StaticResource TextStyle}"/>
+                        <Style TargetType="ComboBox" BasedOn="{StaticResource TextStyle}"/>
+                    </StackPanel.Resources>
+                    <TextBox HorizontalAlignment="Left" Width="150" Margin="0 5 0 0" x:Name="TextBox_Type_FS"></TextBox>
+                    <ComboBox HorizontalAlignment="Left" Width="150" Margin="0 14 0 0" x:Name="ComboBox_Cluster_Size">
+                        <ComboBoxItem Tag="512">
+                            <TextBlock>512</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="1024">
+                            <TextBlock>1024</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="2048">
+                            <TextBlock>2048</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Tag="4096">
+                            <TextBlock>4096</TextBlock>
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <TextBox HorizontalAlignment="Left" Width="150" Margin="0 12 0 0" x:Name="TextBox_Size_FS"></TextBox>
+                    <TextBox HorizontalAlignment="Left" Width="150" Margin="0 15 0 0" x:Name="TextBox_Create_Login_User"></TextBox>
+                    <PasswordBox HorizontalAlignment="Left" Width="150" Margin="0 13 0 0" x:Name="PasswordBox_Create_Password_User"></PasswordBox>
+                </StackPanel>
+            </Viewbox>
+            
+            <Viewbox Grid.Row="1" Grid.Column="1">
+                <Button MaxWidth="150" MaxHeight="20" Margin="5" Style="{StaticResource TextStyle}" 
+                    x:Name="Button_Create2_FS" Click="Button_Create2_FS_Click">Создать файловую систему</Button>
+            </Viewbox>
+        </Grid>
+
+        <Viewbox>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20" x:Name="Grid_Start" Visibility="Collapsed">
+                <Button MaxWidth="150" Height="50" Margin="0 20 0 20" Padding="10" x:Name="Button_Create_FS" Click="Button_Create_FS_Click">
+                    Создать Файлуху
+                </Button>
+                <Button MaxWidth="150" Height="50" Margin="0 20 0 20" Padding="10" x:Name="Button_Choose_FS" Click="Button_Choose_FS_Click">
+                    Выбрать Файлуху
+                </Button>
+            </StackPanel>
+        </Viewbox>
+    </Grid>
+</Window>    

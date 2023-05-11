@@ -1,0 +1,77 @@
+﻿<Window x:Class="File_system_coursework.Scheduler_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:File_system_coursework"
+        mc:Ignorable="d"
+        Title="Scheduler_Window" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="Text_Style">
+            <Setter Property="Control.FontFamily" Value="Times New Roman"/>
+            <Setter Property="Control.FontSize" Value="15"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Style="{StaticResource Text_Style}">
+            <TextBlock VerticalAlignment="Center" Margin="10 0 0 0">Приоритет</TextBlock>
+            <ComboBox Margin="10 0 0 0" x:Name="CB_Priority"></ComboBox>
+            <TextBlock VerticalAlignment="Center" Margin="20 0 0 0">Время выполнения</TextBlock>
+            <TextBox Margin="10 0 0 0" MinWidth="35" x:Name="TB_Time"></TextBox>
+            <TextBlock VerticalAlignment="Center" Margin="20 0 0 0">Состояние</TextBlock>
+            <ComboBox Margin="10 0 0 0" x:Name="CB_State">
+                <ComboBoxItem>
+                    <TextBlock Text="Z"></TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="R"></TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="P"></TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="S"></TextBlock>
+                </ComboBoxItem>
+            </ComboBox>
+            <Button Margin="20 0 0 0" Padding="4" x:Name="Btn_Add" Click="Btn_Add_Click">Добавить процесс</Button>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" Margin="10" x:Name="DG_Proccess" IsReadOnly="false" CanUserAddRows="False" CanUserDeleteRows="False"
+                  CanUserReorderColumns="False" CanUserSortColumns="False" AutoGenerateColumns="False" Style="{StaticResource Text_Style}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Процесс №" Binding="{Binding Num}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Приоритет" Binding="{Binding Priority}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Время вхождения" Binding="{Binding Entry_time}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Полное время выполнения" Binding="{Binding Work_time}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Оставшееся время выполнения" Binding="{Binding Left_time}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Состояние" Binding="{Binding Current_state}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Квант" Binding="{Binding Quant}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="2" Margin="10" x:Name="DG_Work" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"
+                  CanUserReorderColumns="False" CanUserSortColumns="False"  Style="{StaticResource Text_Style}">
+            <DataGrid.Columns>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center" Style="{StaticResource Text_Style}">
+            <Button Margin="10 0 0 0" Padding="4" x:Name="Btn_Step" Click="Btn_Step_Click">Сделать шаг</Button>
+            <TextBlock VerticalAlignment="Center" Margin="30 0 0 0">Квант</TextBlock>
+            <ComboBox Margin="10 0 0 0" x:Name="CB_Quant"></ComboBox>
+            <Button Margin="15 0 0 0" Padding="4" x:Name="Btn_Set_Quant" Click="Btn_Set_Quant_Click">Установить квант</Button>
+
+        </StackPanel>
+    </Grid>
+</Window>

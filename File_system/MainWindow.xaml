@@ -1,0 +1,87 @@
+﻿<Window x:Class="File_system_coursework.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:File_system_coursework"
+        mc:Ignorable="d"
+        Background="LightBlue"
+        Title="NABATOV FILE SYSTEM PRODUCTION SUPER GOOD TIME FOREVER TRUE" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style x:Key="Text_Style_Menu">
+            <Setter Property="Control.FontFamily" Value="Times New Roman"/>
+            <Setter Property="Control.FontSize" Value="15"/>
+        </Style>
+        
+        <Style x:Key="Text_Style_File_Name">
+            <Setter Property="Control.FontFamily" Value="Times New Roman"/>
+            <Setter Property="Control.FontSize" Value="15"/>
+        </Style>
+        
+        <ContextMenu Style="{StaticResource Text_Style_Menu}" x:Key="Context_Menu_Visible_Item">
+            <MenuItem Header="Открыть" Click="Menu_Open_Click"></MenuItem>
+            <MenuItem Header="Переименовать" Click="Menu_Rename_Click"></MenuItem>
+            <MenuItem Header="Копировать" Click="Menu_Copy_Click"></MenuItem>
+            <MenuItem Header="Изменить права" Click="Menu_Change_Rights_Click"></MenuItem>
+            <MenuItem Header="Удалить" Click="Menu_Delete_Click"></MenuItem>
+            <MenuItem Header="Сделать скрытым" Click="Menu_Hidden_Click"></MenuItem>
+            <MenuItem Header="Свойство" Click="Menu_Properties_Click"></MenuItem>
+        </ContextMenu>
+
+        <ContextMenu Style="{StaticResource Text_Style_Menu}" x:Key="Context_Menu_Hidden_Item">
+            <MenuItem Header="Открыть" Click="Menu_Open_Click"></MenuItem>
+            <MenuItem Header="Переименовать" Click="Menu_Rename_Click"></MenuItem>
+            <MenuItem Header="Копировать" Click="Menu_Copy_Click"></MenuItem>
+            <MenuItem Header="Изменить права" Click="Menu_Change_Rights_Click"></MenuItem>
+            <MenuItem Header="Удалить" Click="Menu_Delete_Click"></MenuItem>
+            <MenuItem Header="Сделать видимым" Click="Menu_Visible_Click"></MenuItem>
+            <MenuItem Header="Свойство" Click="Menu_Properties_Click"></MenuItem>
+        </ContextMenu>
+
+        <ContextMenu Style="{StaticResource Text_Style_Menu}" x:Key="Context_Menu_Panel">
+            <MenuItem Header="Создать">
+                <MenuItem Header="Каталог" x:Name="Menu_Create_Catalog" Click="Menu_Create_Catalog_Click"></MenuItem>
+                <MenuItem Header="Файл" x:Name="Menu_Create_File" Click="Menu_Create_File_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Вставить" Click="Menu_Insert_Click"></MenuItem>
+        </ContextMenu>
+
+    </Window.Resources>
+    
+    <Grid x:Name ="Grid_Main">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="12*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu MaxHeight="30" VerticalAlignment="Top" Style="{StaticResource Text_Style_Menu}">
+            <MenuItem Header="Файловая система">
+                <MenuItem Header="Пользователи/группы..." x:Name="MenuItem_Users_Groups" Click="MenuItem_Users_Groups_Click"></MenuItem>
+                <MenuItem Header="Отображать скрытые файлы" StaysOpenOnClick="True" IsCheckable="True" IsChecked="False" x:Name="MenuItem_Show_Hidden" Click="MenuItem_Show_Hidden_Click"></MenuItem>
+                <Separator />
+                <MenuItem Header="Выход" x:Name="MenuItem_Exit" Click="MenuItem_Exit_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Планировщик">
+                <MenuItem Header="Запуск" x:Name="MenuItem_Scheduler" Click="MenuItem_Scheduler_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        
+        <StackPanel Grid.Row="1" Margin="5" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button x:Name="Button_Back" Click="Button_Back_Click">
+                <Image Source="D:\Проекты Visual Studio\File_system\File_system\Resources\го-убые-смешные-стре-ки-75938456.jpg"></Image>
+            </Button>
+            <TextBlock x:Name="TextBlock_Current_Path" Margin="5 0 0 0" Style="{StaticResource Text_Style_Menu}" FontSize="18" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+
+        <Border Grid.Row="2" BorderBrush="DodgerBlue" BorderThickness="1">
+            <WrapPanel  Orientation="Horizontal" VerticalAlignment="Top" x:Name="WrapPanel_Work_Field" ContextMenu="{StaticResource Context_Menu_Panel}" Background="Transparent">
+                <Border/>
+            </WrapPanel>
+        </Border>
+    </Grid>
+</Window>
